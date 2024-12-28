@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "LockerManagement_backend": {
+      "main": "src/LockerManagement_backend/main.mo",
+      "type": "motoko"
+    },
+    "LockerManagement_frontend": {
+      "dependencies": [
+        "LockerManagement_backend"
+      ],
+      "source": [
+        "src/LockerManagement_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "LockerManagement_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
