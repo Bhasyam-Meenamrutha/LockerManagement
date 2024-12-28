@@ -1,31 +1,23 @@
-import { useState } from 'react';
-import { LockerManagement_backend } from 'declarations/LockerManagement_backend';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import HomePage from "./HomePage";
+import LockerDetailsPage from "./LockerDetailsPage";
+import './index.scss'
 
-function App() {
-  const [greeting, setGreeting] = useState('');
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    LockerManagement_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
-
+const App = () => {
   return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
+    <Router>
+      <div className="app">
+        <header>
+          <h1>Bank Locker Management</h1>
+        </header>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/locker/:id" element={<LockerDetailsPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
